@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>c++ compiler</title>
+</head>
+<body>
+
+	<h1 style="text-align: center">Task 5</h1>
+	<hr>
+	<br>
+	<br>
+	<form name="formData">
+		<label for="code">Input c++ code here:</label>
+		<textarea id="code" name="code">
+#include <iostream>
+
+using namespace std;
+
+int main(void){
+	cout << "Hello World!" << endl;
+	return 0;
+}
+		</textarea>
+		<br>
+		<button type="button" id="btn">Submit</button>
+	</form>
+	<br>
+	<p id="test"></p>
+	<br>
+	<textarea disabled id="output"></textarea>
+
+	<script type="text/javascript">
+		document.getElementById("btn").addEventListener("click", (event) => {
+			let outputObject = document.getElementById("output");
+			event.preventDefault();
+			let input = document.getElementById("code").value;
+
+			fetch("/code", {
+				method: 'POST',
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({code: input})
+			})
+			.then(response => response.json())
+			.then(data => {
+				outputObject.value = data.compiled;
+			})
+		});
+	</script>
+
+</body>
+</html>

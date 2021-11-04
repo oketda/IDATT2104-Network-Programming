@@ -1,0 +1,29 @@
+body {
+	background-color: cyan;
+}
+
+label{
+	display: block;
+	text-align: center;
+}
+
+#code {
+	display: block;
+
+	width: 600px;
+	height: 240px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#btn {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+#output {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 600px;
+	height: 240px;
+}
